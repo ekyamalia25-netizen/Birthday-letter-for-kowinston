@@ -1,0 +1,160 @@
+:root{
+  --pink:#ffa6c9;
+  --pink-dark:#f382ad;
+  --ink:#222;
+  --paper:#fffdf7;
+  --shadow:rgba(0,0,0,.18);
+  --accent:#ffcee1;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:
+    radial-gradient(60rem 60rem at 10% 10%, #fff0f6 0, #ffe3ee 25%, #ffd7e8 50%, #ffeaf3 70%, #fff 100%);
+  color:var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.site{
+  min-height:100%;
+  display:grid;
+  place-items:center;
+  padding:32px 16px;
+}
+
+/* Scene (envelope) */
+.scene{
+  display:grid;
+  gap:18px;
+  place-items:center;
+  transform: translateZ(0);
+}
+
+.envelope{
+  position:relative;
+  width:min(440px, 88vw);
+  height:280px;
+  perspective:1200px;
+}
+
+.envelope__back{
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, var(--pink) 0%, var(--pink-dark) 100%);
+  border-radius:16px;
+  box-shadow:0 18px 40px var(--shadow);
+}
+
+.envelope__paper{
+  position:absolute; inset:14px 14px 64px 14px;
+  background:linear-gradient(180deg, #fff 0, var(--paper) 100%);
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  padding:16px;
+  overflow:hidden;
+}
+.tofrom{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  font-weight:600;
+  color:#8a3b57;
+  letter-spacing:.3px;
+}
+.tofrom span{background:var(--accent); padding:.5rem .75rem; border-radius:.75rem}
+
+.envelope__flap{
+  position:absolute; left:0; right:0; top:0; height:56%;
+  background:linear-gradient(180deg, var(--pink-dark) 0%, var(--pink) 100%);
+  clip-path:polygon(0 0, 100% 0, 50% 100%);
+  transform-origin:50% 0%;
+  border-top-left-radius:16px;
+  border-top-right-radius:16px;
+  transition: transform 900ms cubic-bezier(.2,.8,.2,1);
+}
+
+.envelope__shadow{
+  position:absolute; left:8%; right:8%; bottom:10px; height:18px;
+  background:radial-gradient(40% 100% at 50% 0, var(--shadow), transparent 70%);
+  filter:blur(2px);
+  border-radius:50%;
+}
+
+/* Open state */
+.scene.open .envelope__flap{
+  transform:rotateX(165deg);
+}
+
+/* Button */
+.btn{
+  appearance:none;
+  border:0;
+  background:#111;
+  color:#fff;
+  padding:12px 18px;
+  border-radius:999px;
+  font-weight:700;
+  letter-spacing:.3px;
+  cursor:pointer;
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
+  transition: transform .12s ease, box-shadow .2s ease, background .2s ease;
+}
+.btn:hover{ transform:translateY(-1px); box-shadow:0 14px 28px rgba(0,0,0,.22); }
+.btn:active{ transform:translateY(0); box-shadow:0 8px 18px rgba(0,0,0,.18); }
+.btn--ghost{
+  background:transparent; color:#111; border:2px solid #111;
+}
+
+/* Letter area */
+.letter{
+  position:fixed; inset:0;
+  display:grid; place-items:center;
+  background:rgba(255, 240, 246, .75);
+  backdrop-filter:saturate(120%) blur(6px);
+  opacity:0; pointer-events:none;
+  transition: opacity .5s ease;
+}
+
+.letter.show{
+  opacity:1; pointer-events:auto;
+}
+
+.paper{
+  width:min(720px, 92vw);
+  max-height:min(84vh, 920px);
+  overflow:auto;
+  padding:40px 28px;
+  background:var(--paper);
+  border:1px solid #f6d9e5;
+  border-radius:20px;
+  box-shadow:0 24px 56px rgba(0,0,0,.18);
+  line-height:1.6;
+  /* Required font */
+  font-family: "Courier New", Courier, monospace;
+  font-size:18px;
+  animation: slideUp .7s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.paper h1{
+  margin-top:0;
+  font-size:28px;
+  letter-spacing:.5px;
+}
+
+.signature{
+  margin-top:24px;
+  font-style:italic;
+  text-align:right;
+}
+
+@keyframes slideUp{
+  from{ transform:translateY(24px); opacity:0; }
+  to{ transform:translateY(0); opacity:1; }
+}
+
+/* Confetti canvas covers page but clicks go through when hidden */
+.confetti{
+  position:fixed; inset:0; pointer-events:none;
+}

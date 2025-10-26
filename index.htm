@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Birthday Letter for Kowins</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="site">
+    <!-- Envelope Scene -->
+    <section class="scene" id="scene">
+      <div class="envelope" aria-label="Pink envelope">
+        <div class="envelope__back"></div>
+        <div class="envelope__paper">
+          <div class="tofrom">
+            <span>To: <strong>Winston</strong></span>
+            <span>From: <strong>Eky</strong></span>
+          </div>
+        </div>
+        <div class="envelope__flap"></div>
+        <div class="envelope__shadow"></div>
+      </div>
+
+      <button id="openBtn" class="btn" aria-controls="letterArea" aria-expanded="false">
+        Open the envelope
+      </button>
+    </section>
+
+    <!-- Letter -->
+    <section id="letterArea" class="letter" aria-live="polite">
+      <article class="paper">
+        <h1>Happy Birthday, Kowins!</h1>
+
+        <p>
+          Lately, I’ve been witnessing how God is shaping your character as a leader.
+          I’m truly happy and grateful to be led by you. Thank you for being willing to
+          grow and learn to become a good leader. I’ve seen your efforts, Ko, and I
+          deeply appreciate them.
+        </p>
+
+        <p>
+          It’s only been a little over a year since we’ve known each other, yet you’ve
+          already taught me so many things — about forgiveness, about having standards,
+          about grace, and even how to apologize sincerely. Through those moments, I’ve
+          learned not to be afraid of doing great things.
+        </p>
+
+        <p>
+          At first, I didn’t even realize what my strengths were, but you helped me
+          discover them. Thank you, Ko, for that. Thank you for choosing to be a leader
+          who’s willing to set aside your ego for our growth. We are truly grateful for you.
+        </p>
+
+        <p>
+          And personally, Ko, I just want to say… thank you — for leading with heart,
+          for trying your best, and for being someone we can look up to.
+        </p>
+
+        <p>Happy birthday once again. You’re a blessing to all of us. 🌻</p>
+
+        <footer class="signature">— With gratitude, Eky</footer>
+
+        <button id="closeBtn" class="btn btn--ghost">Close</button>
+      </article>
+    </section>
+  </main>
+
+  <!-- Decorative confetti canvas -->
+  <canvas id="confetti" class="confetti" aria-hidden="true"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
